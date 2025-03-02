@@ -31,6 +31,7 @@
     "@remotion/media-parser": "4.0.270",
     "@remotion/preload": "4.0.270",
     "@remotion/zod-types": "4.0.270",
+    "@tailwindcss/postcss": "^4.0.9",
     "react": "18.2.0",
     "react-circle-flags": "^0.0.23",
     "react-dom": "18.2.0",
