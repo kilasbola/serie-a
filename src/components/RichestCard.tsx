@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { TopPlayer } from "../types/schema";
-import { CircleFlag } from 'react-circle-flags';
+import { CircleFlag } from "react-circle-flags";
 import {
   FaMapMarkerAlt as MapPin,
   FaFutbol as Football,
@@ -80,14 +80,14 @@ export const RichestCard: React.FC<{
         fontFamily: geistFont?.fontFamily || "sans-serif",
       }}
     >
-      {/* 
+      {/*
        * PENTING: Ubah class di bawah ini untuk menyesuaikan kartu
        * 1. Ubah w-[600px] jika perlu mengubah lebar kartu
        * 2. Ubah h-auto menjadi h-[650px] untuk ukuran tetap
        * 3. Kurangi max-h-[750px] menjadi nilai yang lebih kecil (misal max-h-[650px]) jika kartu terlalu tinggi
        * 4. Pastikan overflow-visible (jangan diubah menjadi overflow-auto atau overflow-scroll)
        */}
-      <div className="w-[600px] h-[1300px] max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-white bg-opacity-90 backdrop-blur-sm border border-gray-200 transform transition-all duration-300">
+      <div className="w-[600px] h-[1300px] max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-opacity-90 backdrop-blur-sm border border-gray-200 transform transition-all duration-300">
         {/* Header - Gradient Background with Rank */}
         <div className="relative">
           <div className="absolute top-5 left-5 z-10 bg-black/80 text-white font-bold text-3xl rounded-full h-20 w-20 flex items-center justify-center border-4 border-stone-50 shadow-xl">
@@ -97,7 +97,7 @@ export const RichestCard: React.FC<{
 
           {/* Avatar - Overlapping Position */}
           <div className="flex justify-center -mt-24">
-            <div className="w-90 h-90 rounded-full border-8 border-white shadow-xl overflow-hidden bg-white">
+            <div className="w-90 h-90 rounded-full border-8 border-white shadow-xl overflow-hidden">
               <img
                 src={`https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`}
                 alt={person.name}
@@ -113,10 +113,10 @@ export const RichestCard: React.FC<{
           </div>
         </div>
 
-        {/* 
+        {/*
          * Name Section
-         * PENTING: 
-         * 1. Kurangi margin dan padding jika perlu menghemat ruang vertikal 
+         * PENTING:
+         * 1. Kurangi margin dan padding jika perlu menghemat ruang vertikal
          * 2. Kurangi ukuran font jika terlalu besar (text-3xl menjadi text-2xl)
          */}
         <div className="px-4 pt-3 pb-2 text-center">
@@ -128,17 +128,19 @@ export const RichestCard: React.FC<{
             <span className="bg-stone-950 text-stone-50 text-3xl font-semibold px-6 py-3 my-6 rounded-full flex items-center gap-1">
               {person.country}{" "}
               {getCountryCode(person.flag) ? (
-                <CircleFlag countryCode={getCountryCode(person.flag)} className="h-12 w-12 py-1 border-4 border-stone-50 rounded-full" />
+                <CircleFlag
+                  countryCode={getCountryCode(person.flag)}
+                  className="h-12 w-12 py-1 border-4 border-stone-50 rounded-full"
+                />
               ) : (
                 "🌍" // Fallback jika flag tidak valid
               )}
-
             </span>
           </div>
         </div>
 
-        {/* 
-         * Assists Info 
+        {/*
+         * Assists Info
          * PENTING: Kurangi padding (py-5 menjadi py-3) untuk menghemat ruang vertikal
          */}
         <div className="px-6 py-6 bg-sky-950 text-white text-center">
@@ -153,13 +155,13 @@ export const RichestCard: React.FC<{
           </div>
         </div>
 
-        {/* 
-         * Details Grid - Compact 
-         * PENTING: 
+        {/*
+         * Details Grid - Compact
+         * PENTING:
          * 1. Kurangi padding (p-5 menjadi p-3) untuk menghemat ruang vertikal
          * 2. Kurangi gap (gap-3 menjadi gap-2) jika perlu
          */}
-        <div className="grid grid-cols-2 gap-2 p-3 bg-white/30 backdrop-blur-sm">
+        <div className="grid grid-cols-2 gap-2 p-3 backdrop-blur-sm">
           <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
             <JoinYear className="h-10 w-10 text-green-600 flex-shrink-0" />
             <div>
@@ -216,7 +218,7 @@ export const RichestCard: React.FC<{
             <Stadium className="h-10 w-10 text-rose-500 flex-shrink-0 font-bold" />
             <div className="w-full">
               <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
-                Team 
+                Team
               </p>
               <p className="font-bold text-gray-800 text-3xl">
                 {person.team || "N/A"}
@@ -238,11 +240,10 @@ export const RichestCard: React.FC<{
             </div>
           </div>
         </div>
-        
 
-        {/* 
-         * Footer 
-         * PENTING: Kurangi padding (py-3 menjadi py-2) untuk menghemat ruang vertikal 
+        {/*
+         * Footer
+         * PENTING: Kurangi padding (py-3 menjadi py-2) untuk menghemat ruang vertikal
          * Anda juga bisa menghapus footer sepenuhnya jika diperlukan ruang lebih
          */}
         {/* <div className="px-10 py-3 rounded-b-xl border-t border-gray-200 bg-slate-600 flex justify-between items-center mt-auto">
