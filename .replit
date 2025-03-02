@@ -20,5 +20,20 @@ localPort = 36241
 externalPort = 3003
 
 [[ports]]
+localPort = 42425
+externalPort = 80
+
+[[ports]]
 localPort = 43509
 externalPort = 3001
+
+[workflows]
+runButton = "Dev"
+
+[[workflows.workflow]]
+name = "Dev"
+author = 39269799
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pnpm dev"
