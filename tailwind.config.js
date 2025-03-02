@@ -28,4 +28,9 @@ module.exports = {
   experimental: {
     optimizeUniversalDefaults: true,
   },
+  corePlugins: {
+    backgroundOpacity: true,
+    textOpacity: true,
+    borderOpacity: true,
+  },
 };

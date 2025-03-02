@@ -87,7 +87,7 @@ export const RichestCard: React.FC<{
        * 3. Kurangi max-h-[750px] menjadi nilai yang lebih kecil (misal max-h-[650px]) jika kartu terlalu tinggi
        * 4. Pastikan overflow-visible (jangan diubah menjadi overflow-auto atau overflow-scroll)
        */}
-      <div className="w-[600px] h-[1300px] max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-white/90 backdrop-blur-sm border border-gray-200 transform transition-all duration-300">
+      <div className="w-[600px] h-[1300px] max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-white bg-opacity-90 backdrop-blur-sm border border-gray-200 transform transition-all duration-300">
         {/* Header - Gradient Background with Rank */}
         <div className="relative">
           <div className="absolute top-5 left-5 z-10 bg-black/80 text-white font-bold text-3xl rounded-full h-20 w-20 flex items-center justify-center border-4 border-stone-50 shadow-xl">
