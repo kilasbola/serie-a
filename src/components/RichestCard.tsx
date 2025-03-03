@@ -144,7 +144,7 @@ export const RichestCard: React.FC<{
          * PENTING: Kurangi padding (py-5 menjadi py-3) untuk menghemat ruang vertikal
          */}
         <div className="px-6 py-6 bg-blue-800 text-white text-center rounded-b-xl">
-          <p className="text-2xl uppercase font-semibold tracking-wider opacity-90 mb-3">
+          <p className="text-2xl uppercase font-semibold tracking-wider mb-3">
             Total Assists
           </p>
           <div className="flex items-center justify-center gap-2 bg-blue-600 rounded-full p-2">

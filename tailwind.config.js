@@ -35,4 +35,8 @@ module.exports = {
     textOpacity: true,
     borderOpacity: true,
   },
+  safelist: [
+    'opacity-90',
+    'opacity-70'
+  ],
 };
