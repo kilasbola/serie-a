@@ -80,24 +80,21 @@ export const RichestCard: React.FC<{
         fontFamily: geistFont?.fontFamily || "sans-serif",
       }}
     >
-      {/*
-       * PENTING: Ubah class di bawah ini untuk menyesuaikan kartu
-       * 1. Ubah w-[600px] jika perlu mengubah lebar kartu
-       * 2. Ubah h-auto menjadi h-[650px] untuk ukuran tetap
-       * 3. Kurangi max-h-[750px] menjadi nilai yang lebih kecil (misal max-h-[650px]) jika kartu terlalu tinggi
-       * 4. Pastikan overflow-visible (jangan diubah menjadi overflow-auto atau overflow-scroll)
-       */}
-      <div className="w-[600px] h-auto max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-white backdrop-blur-sm border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:scale-105">
-        {/* Header - Gradient Background with Rank */}
-        <div className="relative">
-          <div className="absolute top-5 left-5 z-10 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold text-3xl rounded-full h-20 w-20 flex items-center justify-center border-4 border-white shadow-xl">
+      {/* Card container dengan shadow dan border yang lebih halus */}
+      <div className="w-[600px] h-auto rounded-2xl shadow-lg bg-white border border-slate-200 transition-all duration-300 hover:shadow-xl">
+        {/* Header dengan background gradient yang lebih profesional */}
+        <div className="relative h-36 bg-gradient-to-r from-blue-600 to-blue-800 rounded-t-2xl">
+          {/* Rank badge */}
+          <div className="absolute -bottom-8 left-8 z-10 h-16 w-16 flex items-center justify-center bg-blue-700 text-white font-bold text-2xl rounded-full border-4 border-white shadow-md">
             #{person.rank}
           </div>
-          <div className="h-40 bg-gradient-to-b from-black to-gray-800 rounded-t-xl"></div>
+        </div>
 
-          {/* Avatar - Overlapping Position */}
-          <div className="flex justify-center -mt-24">
-            <div className="w-90 h-90 rounded-full border-8 border-white shadow-xl overflow-hidden">
+        {/* Player info section */}
+        <div className="flex flex-col md:flex-row pt-8 px-8 pb-6">
+          {/* Avatar with clean border */}
+          <div className="flex-shrink-0 md:mr-6 mb-4 md:mb-0 self-center md:self-start">
+            <div className="w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden">
               <img
                 src={`https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`}
                 alt={person.name}
@@ -111,158 +108,101 @@ export const RichestCard: React.FC<{
               />
             </div>
           </div>
-        </div>
 
-        {/*
-         * Name Section
-         * PENTING:
-         * 1. Kurangi margin dan padding jika perlu menghemat ruang vertikal
-         * 2. Kurangi ukuran font jika terlalu besar (text-3xl menjadi text-2xl)
-         */}
-        <div className="px-4 pt-3 pb-2 text-center">
-          <h1 className="text-4xl font-bold text-gray-800 tracking-tight leading-tight mb-1">
-            {person.jersey_name || person.name.split(" ").pop()}
-          </h1>
-          <p className="text-gray-500 text-2xl mb-1 italic">{person.name}</p>
-          <div className="flex justify-center my-1">
-            <span className="bg-blue-600 text-white text-2xl font-semibold px-4 py-2 rounded-full flex items-center gap-1">
-              {person.country}{" "}
-              {getCountryCode(person.flag) ? (
-                <CircleFlag
-                  countryCode={getCountryCode(person.flag)}
-                  className="h-8 w-8 border-4 border-white rounded-full"
-                />
-              ) : (
-                "🌍" // Fallback jika flag tidak valid
-              )}
-            </span>
-          </div>
-        </div>
-
-        {/*
-         * Assists Info
-         * PENTING: Kurangi padding (py-5 menjadi py-3) untuk menghemat ruang vertikal
-         */}
-        <div className="px-6 py-6 bg-blue-800 text-white text-center rounded-b-xl">
-          <p className="text-2xl uppercase font-semibold tracking-wider mb-3">
-            Total Assists
-          </p>
-          <div className="flex items-center justify-center gap-2 bg-blue-600 rounded-full p-2">
-            <Football className="w-10 h-10 text-white" />
-            <span className="text-4xl text-white font-extrabold">
-              {displayedAssists}
-            </span>
-          </div>
-        </div>
-
-        {/*
-         * Details Grid - Compact
-         * PENTING:
-         * 1. Kurangi padding (p-5 menjadi p-3) untuk menghemat ruang vertikal
-         * 2. Kurangi gap (gap-3 menjadi gap-2) jika perlu
-         */}
-        <div className="grid grid-cols-2 gap-2 p-3 backdrop-blur-sm">
-          <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <JoinYear className="h-8 w-8 text-green-600 flex-shrink-0" />
-            <div>
-              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
-                Joined:
-              </p>
-              <p className="font-bold text-gray-800 text-2xl">
-                {person.joined_year || "N/A"}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <EndYear className="h-8 w-8 text-red-500 flex-shrink-0" />
-            <div>
-              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
-                Expires:
-              </p>
-              <p className="font-bold text-gray-800 text-2xl">
-                {person.end_year || "N/A"}
-              </p>
-            </div>
-          </div>
-
-          {/* batas */}
-
-          <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Ruler className="h-8 w-8 text-amber-500 flex-shrink-0 font-bold" />
-            <div>
-              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
-                Height
-              </p>
-              <p className="font-bold text-gray-800 text-2xl">
-                {person.height_cm ? `${person.height_cm} cm` : "N/A"}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Birthday className="h-8 w-8 text-fuchsia-500 flex-shrink-0" />
-            <div>
-              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
-                Date of birth
-              </p>
-              <p className="font-bold text-gray-800 text-2xl">
-                {person.birth_date || "N/A"}
-              </p>
-            </div>
-          </div>
-
-          {/* batas */}
-
-          <div className="col-span-2 flex text-left items-center gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Stadium className="h-8 w-8 text-rose-500 flex-shrink-0 font-bold" />
-            <div className="w-full">
-              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
-                Team
-              </p>
-              <p className="font-bold text-gray-800 text-2xl">
-                {person.team || "N/A"}
-              </p>
-            </div>
-          </div>
-
-          {/* batas */}
-
-          <div className="col-span-2 flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Position className="h-8 w-8 text-pink-500 flex-shrink-0" />
-            <div className="w-full">
-              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
-                Position
-              </p>
-              <p className="font-bold text-gray-800 text-2xl">
-                {person.position || "Midfielder"}
-              </p>
+          {/* Player name and country */}
+          <div className="flex-grow">
+            <h1 className="text-3xl font-bold text-slate-800 mb-1">
+              {person.jersey_name || person.name.split(" ").pop()}
+            </h1>
+            <p className="text-slate-500 text-lg mb-3">{person.name}</p>
+            <div className="flex items-center mb-3">
+              <span className="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-full flex items-center gap-1">
+                {person.country}{" "}
+                {getCountryCode(person.flag) ? (
+                  <CircleFlag
+                    countryCode={getCountryCode(person.flag)}
+                    className="h-5 w-5 ml-1"
+                  />
+                ) : (
+                  "🌍"
+                )}
+              </span>
             </div>
           </div>
         </div>
 
-        {/*
-         * Footer
-         * PENTING: Kurangi padding (py-3 menjadi py-2) untuk menghemat ruang vertikal
-         * Anda juga bisa menghapus footer sepenuhnya jika diperlukan ruang lebih
-         */}
-        {/* <div className="px-10 py-3 rounded-b-xl border-t border-gray-200 bg-slate-600 flex justify-between items-center mt-auto">
-          <div className="text-3xl text-white font-bold">
-            DANGO BALL
+        {/* Assists counter - Clean and modern */}
+        <div className="px-8 py-5 bg-blue-50 border-t border-b border-blue-100">
+          <div className="flex items-center justify-between">
+            <p className="text-blue-800 font-semibold tracking-wide">TOTAL ASSISTS</p>
+            <div className="flex items-center gap-2 bg-blue-600 rounded-lg px-4 py-2">
+              <Football className="w-5 h-5 text-blue-200" />
+              <span className="text-2xl text-white font-bold">{displayedAssists}</span>
+            </div>
           </div>
-          <div className="flex space-x-2">
-            <span className="w-6 h-6 rounded-full bg-pink-200"></span>
-            <span className="w-6 h-6 rounded-full bg-stone-50"></span>
-            <span className="w-6 h-6 rounded-full bg-green-200"></span>
-          </div>
-        </div> */}
+        </div>
 
-        {/* Contoh penggunaan class centering */}
-        {/* <div className="container">
-          <div className="center">
-            Centered content
+        {/* Player details in a clean grid */}
+        <div className="grid grid-cols-2 gap-4 p-6">
+          {/* Join Year */}
+          <div className="flex items-center gap-3">
+            <JoinYear className="h-5 w-5 text-green-600 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Joined</p>
+              <p className="font-medium text-slate-800">{person.joined_year || "N/A"}</p>
+            </div>
           </div>
-        </div> */}
+
+          {/* End Year */}
+          <div className="flex items-center gap-3">
+            <EndYear className="h-5 w-5 text-red-500 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Expires</p>
+              <p className="font-medium text-slate-800">{person.end_year || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Height */}
+          <div className="flex items-center gap-3">
+            <Ruler className="h-5 w-5 text-amber-500 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Height</p>
+              <p className="font-medium text-slate-800">{person.height_cm ? `${person.height_cm} cm` : "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Birth Date */}
+          <div className="flex items-center gap-3">
+            <Birthday className="h-5 w-5 text-purple-500 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Date of birth</p>
+              <p className="font-medium text-slate-800">{person.birth_date || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Team - Full width */}
+          <div className="col-span-2 flex items-center gap-3 pt-2 border-t border-slate-100">
+            <Stadium className="h-5 w-5 text-blue-500 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Team</p>
+              <p className="font-medium text-slate-800">{person.team || "N/A"}</p>
+            </div>
+          </div>
+
+          {/* Position - Full width */}
+          <div className="col-span-2 flex items-center gap-3">
+            <Position className="h-5 w-5 text-indigo-500 flex-shrink-0" />
+            <div>
+              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Position</p>
+              <p className="font-medium text-slate-800">{person.position || "Midfielder"}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer dengan subtle branding */}
+        <div className="px-6 py-3 text-center border-t border-slate-100 text-xs text-slate-400">
+          DANGO BALL PLAYER CARD
+        </div>
       </div>
     </div>
   );
