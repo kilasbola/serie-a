@@ -87,13 +87,13 @@ export const RichestCard: React.FC<{
        * 3. Kurangi max-h-[750px] menjadi nilai yang lebih kecil (misal max-h-[650px]) jika kartu terlalu tinggi
        * 4. Pastikan overflow-visible (jangan diubah menjadi overflow-auto atau overflow-scroll)
        */}
-      <div className="w-[600px] h-[1300px] max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-white backdrop-blur-sm border border-gray-200 transform transition-all duration-300">
+      <div className="w-[600px] h-auto max-h-[1500px] overflow-visible rounded-xl shadow-2xl bg-white backdrop-blur-sm border border-gray-200 transform transition-all duration-300 hover:shadow-2xl hover:scale-105">
         {/* Header - Gradient Background with Rank */}
         <div className="relative">
-          <div className="absolute top-5 left-5 z-10 bg-black text-white font-bold text-3xl rounded-full h-20 w-20 flex items-center justify-center border-4 border-stone-50 shadow-xl">
+          <div className="absolute top-5 left-5 z-10 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold text-3xl rounded-full h-20 w-20 flex items-center justify-center border-4 border-white shadow-xl">
             #{person.rank}
           </div>
-          <div className="h-40 bg-black rounded-t-xl"></div>
+          <div className="h-40 bg-gradient-to-b from-black to-gray-800 rounded-t-xl"></div>
 
           {/* Avatar - Overlapping Position */}
           <div className="flex justify-center -mt-24">
@@ -120,17 +120,17 @@ export const RichestCard: React.FC<{
          * 2. Kurangi ukuran font jika terlalu besar (text-3xl menjadi text-2xl)
          */}
         <div className="px-4 pt-3 pb-2 text-center">
-          <h1 className="text-5xl font-bold text-gray-800 tracking-tight leading-tight mb-1">
+          <h1 className="text-4xl font-bold text-gray-800 tracking-tight leading-tight mb-1">
             {person.jersey_name || person.name.split(" ").pop()}
           </h1>
-          <p className="text-gray-500 text-3xl mb-1 italic">{person.name}</p>
+          <p className="text-gray-500 text-2xl mb-1 italic">{person.name}</p>
           <div className="flex justify-center my-1">
-            <span className="bg-stone-950 text-stone-50 text-3xl font-semibold px-6 py-3 my-6 rounded-full flex items-center gap-1">
+            <span className="bg-blue-600 text-white text-2xl font-semibold px-4 py-2 rounded-full flex items-center gap-1">
               {person.country}{" "}
               {getCountryCode(person.flag) ? (
                 <CircleFlag
                   countryCode={getCountryCode(person.flag)}
-                  className="h-12 w-12 py-1 border-4 border-stone-50 rounded-full"
+                  className="h-8 w-8 border-4 border-white rounded-full"
                 />
               ) : (
                 "🌍" // Fallback jika flag tidak valid
@@ -143,13 +143,13 @@ export const RichestCard: React.FC<{
          * Assists Info
          * PENTING: Kurangi padding (py-5 menjadi py-3) untuk menghemat ruang vertikal
          */}
-        <div className="px-6 py-6 bg-sky-950 text-white text-center">
-          <p className="text-3xl uppercase font-semibold tracking-wider opacity-90 mb-3">
+        <div className="px-6 py-6 bg-blue-800 text-white text-center rounded-b-xl">
+          <p className="text-2xl uppercase font-semibold tracking-wider opacity-90 mb-3">
             Total Assists
           </p>
-          <div className="flex items-center justify-center gap-2 bg-stone-950 rounded-full p-2">
-            <Football className="w-12 h-12 text-stone-50" />
-            <span className="text-5xl text-stone-50 font-extrabold">
+          <div className="flex items-center justify-center gap-2 bg-blue-600 rounded-full p-2">
+            <Football className="w-10 h-10 text-white" />
+            <span className="text-4xl text-white font-extrabold">
               {displayedAssists}
             </span>
           </div>
@@ -163,24 +163,24 @@ export const RichestCard: React.FC<{
          */}
         <div className="grid grid-cols-2 gap-2 p-3 backdrop-blur-sm">
           <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <JoinYear className="h-10 w-10 text-green-600 flex-shrink-0" />
+            <JoinYear className="h-8 w-8 text-green-600 flex-shrink-0" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
+              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
                 Joined:
               </p>
-              <p className="font-bold text-gray-800 text-3xl">
+              <p className="font-bold text-gray-800 text-2xl">
                 {person.joined_year || "N/A"}
               </p>
             </div>
           </div>
 
           <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <EndYear className="h-10 w-10 text-red-500 flex-shrink-0" />
+            <EndYear className="h-8 w-8 text-red-500 flex-shrink-0" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
+              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
                 Expires:
               </p>
-              <p className="font-bold text-gray-800 text-3xl">
+              <p className="font-bold text-gray-800 text-2xl">
                 {person.end_year || "N/A"}
               </p>
             </div>
@@ -189,24 +189,24 @@ export const RichestCard: React.FC<{
           {/* batas */}
 
           <div className="flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Ruler className="h-10 w-10 text-amber-500 flex-shrink-0 font-bold" />
+            <Ruler className="h-8 w-8 text-amber-500 flex-shrink-0 font-bold" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
+              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
                 Height
               </p>
-              <p className="font-bold text-gray-800 text-3xl">
+              <p className="font-bold text-gray-800 text-2xl">
                 {person.height_cm ? `${person.height_cm} cm` : "N/A"}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Birthday className="h-10 w-10 text-fuchsia-500 flex-shrink-0" />
+            <Birthday className="h-8 w-8 text-fuchsia-500 flex-shrink-0" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
+              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
                 Date of birth
               </p>
-              <p className="font-bold text-gray-800 text-3xl">
+              <p className="font-bold text-gray-800 text-2xl">
                 {person.birth_date || "N/A"}
               </p>
             </div>
@@ -215,12 +215,12 @@ export const RichestCard: React.FC<{
           {/* batas */}
 
           <div className="col-span-2 flex text-left items-center gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Stadium className="h-10 w-10 text-rose-500 flex-shrink-0 font-bold" />
+            <Stadium className="h-8 w-8 text-rose-500 flex-shrink-0 font-bold" />
             <div className="w-full">
-              <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
+              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
                 Team
               </p>
-              <p className="font-bold text-gray-800 text-3xl">
+              <p className="font-bold text-gray-800 text-2xl">
                 {person.team || "N/A"}
               </p>
             </div>
@@ -229,12 +229,12 @@ export const RichestCard: React.FC<{
           {/* batas */}
 
           <div className="col-span-2 flex items-center text-left gap-3 p-3 rounded-lg bg-white shadow-sm border border-gray-600">
-            <Position className="h-10 w-10 text-pink-500 flex-shrink-0" />
+            <Position className="h-8 w-8 text-pink-500 flex-shrink-0" />
             <div className="w-full">
-              <p className="text-1xl text-gray-500 uppercase tracking-wide font-semibold">
+              <p className="text-lg text-gray-500 uppercase tracking-wide font-semibold">
                 Position
               </p>
-              <p className="font-bold text-gray-800 text-3xl">
+              <p className="font-bold text-gray-800 text-2xl">
                 {person.position || "Midfielder"}
               </p>
             </div>
