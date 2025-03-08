@@ -18,11 +18,13 @@ jobs:
         with:
           node-version: '22.14.0'
           cache: 'npm'  # 🔹 Gunakan cache npm
-
-      - name: Install Dependencies
+      
+      - name: Delete pnpm-lock.yaml and node_modules
         run: |
           rm -rf node_modules pnpm-lock.yaml
           npm install --package-lock-only
+
+      - name: Install Dependencies
         run: npm ci  # 🔹 Gunakan 'ci' untuk instalasi yang lebih cepat dan stabil
 
       - name: Install Puppeteer Dependencies
