@@ -32,7 +32,7 @@ jobs:
           sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxrandr2 libgbm1 libxtst6 libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0
       
       - name: Render Video
-        run: pnpm exec remotion render PlayerListCard out/video.mp4 --concurrency=1
+        run: pnpm exec remotion render PlayerListCard out/video.mp4 --concurrency=1 --frame 10 --verbose
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
