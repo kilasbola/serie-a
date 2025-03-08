@@ -4,7 +4,7 @@
   "description": "remotion-video",
   "scripts": {
     "dev": "remotion studio",
-    "render": "remotion render --disable-audio --verbose",
+    "render": "remotion render --disable-audio --verbose --concurrency=1",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
