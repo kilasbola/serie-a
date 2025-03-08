@@ -1,4 +1,4 @@
-name: Render Remotion Video
+name: Render Video
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-render:
     runs-on: ubuntu-latest
+    labels: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -16,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '22.x'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
