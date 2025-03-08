@@ -20,6 +20,9 @@ jobs:
           cache: 'npm'  # 🔹 Gunakan cache npm
 
       - name: Install Dependencies
+        run: |
+          rm -rf node_modules pnpm-lock.yaml
+          npm install --package-lock-only
         run: npm ci  # 🔹 Gunakan 'ci' untuk instalasi yang lebih cepat dan stabil
 
       - name: Install Puppeteer Dependencies
