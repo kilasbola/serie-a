@@ -4,7 +4,7 @@
   "description": "remotion-video",
   "scripts": {
     "dev": "remotion studio",
-    "render": "remotion render PlayerListCard out/video.mp4 --disable-audio --verbose --concurrency=$(nproc) | tee render.log",
+    "render": "remotion render PlayerListCard out/video.mp4 --disable-audio --verbose --concurrency=$(nproc)",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"

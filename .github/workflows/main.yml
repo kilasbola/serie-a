@@ -12,22 +12,26 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
-          cache: 'pnpm' # 🔹 Caching otomatis untuk pnpm store
+          cache: 'pnpm' # Caching otomatis untuk pnpm
 
-      - name: Install pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: latest
+          run_install: false  # Hindari auto-install, kita akan install manual
+
+      - name: Verify pnpm installation
+        run: pnpm --version  # 🔹 Cek apakah pnpm sudah terinstall dan bisa diakses
 
       - name: Cache pnpm dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store  # 🔹 Direktori cache pnpm
+          path: ~/.pnpm-store
           key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-${{ runner.os }}-
@@ -39,9 +43,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxrandr2 libgbm1 libxtst6 libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0
-      
+
       - name: Render Video
-        run: pnpm run render
+        run: pnpm run render 2>&1 | tee render.log
 
       - name: Upload Video Artifact
         uses: actions/upload-artifact@v4
