@@ -17,24 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
-          cache: 'pnpm'
-
-      - name: Enable Corepack & Install pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-          pnpm --version  # 🔹 Pastikan pnpm sudah terinstall
-
-      - name: Cache pnpm dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-${{ runner.os }}-
+          cache: 'npm'  # 🔹 Gunakan cache npm
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci  # 🔹 Gunakan 'ci' untuk instalasi yang lebih cepat dan stabil
 
       - name: Install Puppeteer Dependencies
         run: |
@@ -42,7 +28,7 @@ jobs:
           sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxrandr2 libgbm1 libxtst6 libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0
 
       - name: Render Video
-        run: pnpm run render 2>&1 | tee render.log
+        run: npm run render 2>&1 | tee render.log
 
       - name: Upload Video Artifact
         uses: actions/upload-artifact@v4
