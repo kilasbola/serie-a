@@ -12,39 +12,31 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.14.0'
-          cache: 'npm'  # 🔹 Gunakan cache npm
-      
-      - name: Delete pnpm-lock.yaml and node_modules
-        run: |
-          rm -rf node_modules pnpm-lock.yaml
-          npm install --package-lock-only
+          node-version: '22.x'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
 
       - name: Install Dependencies
-        run: npm ci  # 🔹 Gunakan 'ci' untuk instalasi yang lebih cepat dan stabil
-
+        run: pnpm install
+      
       - name: Install Puppeteer Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxrandr2 libgbm1 libxtst6 libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0
-
+      
       - name: Render Video
-        run: npm run render 2>&1 | tee render.log
+        run: pnpm run render
 
-      - name: Upload Video Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: remotion-video
           path: out/video.mp4
-          retention-days: 7
-
-      - name: Upload Render Log
-        uses: actions/upload-artifact@v4
-        with:
-          name: render-log
-          path: render.log
           retention-days: 7
