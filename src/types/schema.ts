@@ -4,17 +4,20 @@ import { z } from 'zod';
 export const TopPlayerSchema = z.object({
   rank: z.number(),
   name: z.string(),
-  image: z.string().url(),
+  image_url: z.string().url(),
+  appearances: z.number(),
+  goals: z.number(),
   assists: z.number(),
-  country: z.string(),
-  team: z.string(),
-  height_cm: z.number(),
-  birth_date: z.string(),
+  nation: z.string(),
+  nation_code: z.string(),
+  club: z.string(),
+  height: z.string(),
+  date_of_birth: z.string(),
   position: z.string(),
   jersey_name: z.string(),
-  joined_year: z.number(),
-  end_year: z.number().nullable(),
-  flag: z.string(),
+  minutes_played: z.number(),
+  join_year: z.string(),
+  end_year: z.string(),
 });
 
 // Type yang dihasilkan dari schema
@@ -23,7 +26,15 @@ export type TopPlayer = z.infer<typeof TopPlayerSchema>;
 // Schema untuk array data pemain bola
 export const TopPlayersSchema = z.array(TopPlayerSchema);
 
-// Fungsi untuk memvalidasi data
+// Fungsi untuk memvalidasi data dengan debugging
 export const validateTopPlayers = (data: unknown) => {
-  return TopPlayersSchema.parse(data);
+  try {
+    console.log("Validating data:", data);
+    const validatedData = TopPlayersSchema.parse(data);
+    console.log("Validation successful:", validatedData);
+    return validatedData;
+  } catch (error) {
+    console.error("Validation error:", error);
+    throw error;
+  }
 };
