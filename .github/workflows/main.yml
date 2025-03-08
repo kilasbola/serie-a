@@ -17,16 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
-          cache: 'pnpm' # Caching otomatis untuk pnpm
+          cache: 'pnpm'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: false  # Hindari auto-install, kita akan install manual
-
-      - name: Verify pnpm installation
-        run: pnpm --version  # 🔹 Cek apakah pnpm sudah terinstall dan bisa diakses
+      - name: Enable Corepack & Install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+          pnpm --version  # 🔹 Pastikan pnpm sudah terinstall
 
       - name: Cache pnpm dependencies
         uses: actions/cache@v4
