@@ -15,10 +15,8 @@ import { TopPlayer, validateTopPlayers } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 
 const { fontFamily: rubikFont } = loadRubik();
-const cardHeight = 400; // Sesuaikan dengan tinggi sebenarnya
-const screenWidth = 2560; // Resolusi layar animasi
 
-const getStaticCardPosition = (index: number) => {
+const getStaticCardPosition = (index: number, screenWidth: number) => {
   const startPosition = screenWidth / 2 - 1300;
   return startPosition + index * 650;
 };
@@ -68,8 +66,8 @@ const IntroTitle: React.FC = () => {
 
 export const PlayerList: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const [handle] = useState(() => delayRender());
+  const { fps, width, height } = useVideoConfig();
+  const [handle] = useState(() => delayRender("timeout-60000")); // Tambahkan timeout 60 detik
   const [validatedData, setValidatedData] = useState<TopPlayer[]>([]);
 
   useEffect(() => {
@@ -77,17 +75,17 @@ export const PlayerList: React.FC = () => {
       try {
         const data = validateTopPlayers(rawTopPlayers).reverse();
         setValidatedData(data);
+        continueRender(handle); // Panggil continueRender setelah data berhasil diproses
       } catch (error) {
         console.error("Data validation error:", error);
-      } finally {
-        continueRender(handle);
+        continueRender(handle); // Pastikan continueRender tetap dipanggil meskipun terjadi error
       }
     };
     processData();
   }, [handle]);
 
   const introDelay = 120;
-  const totalDuration = fps * 170;
+  const totalDuration = fps * 200;
   const cardsToShow = 30;
   const initialDelay = 30;
   const cardEntryDuration = 30;
@@ -106,6 +104,9 @@ export const PlayerList: React.FC = () => {
     [frame, mainCardsAnimationDuration, scrollDuration, cardsToShow]
   );
 
+  // Sesuaikan tinggi kartu berdasarkan resolusi video
+  const cardHeight = height * 0.5; // Misalnya, setengah dari tinggi video
+
   return (
     <AbsoluteFill>
       {/* Intro Sequence */}
@@ -118,7 +119,7 @@ export const PlayerList: React.FC = () => {
       {/* Player List Animation */}
       <Sequence from={introDelay} durationInFrames={totalDuration}>
         <div className="grass">
-          <div className="h-screen w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center">
             <div className="flex gap-4" style={{ transform: `translateX(${scrollX}px)` }}>
               {memoizedData.map((person, index) => {
                 const isMainCard = index < 4;
@@ -126,7 +127,7 @@ export const PlayerList: React.FC = () => {
                   ? initialDelay + index * cardEntryDuration
                   : mainCardsAnimationDuration + (index - 4) * staggerDelay;
 
-                const initialPosition = getStaticCardPosition(index);
+                const initialPosition = getStaticCardPosition(index, width);
 
                 const slideUpOffset = isMainCard
                   ? interpolate(frame - delay - introDelay, [0, 30], [200, 0], {
@@ -150,10 +151,9 @@ export const PlayerList: React.FC = () => {
                 return (
                   <div
                     key={person.rank}
-                    className="absolute"
+                    className="absolute pt-10"
                     style={{
                       left: initialPosition,
-                      top: `calc(50% - ${cardHeight / 1.46}px)`,
                       opacity: interpolate(frame - delay - introDelay, [0, 20], [0, 1], {
                         extrapolateLeft: "clamp",
                         extrapolateRight: "clamp",
@@ -161,7 +161,7 @@ export const PlayerList: React.FC = () => {
                       transform: `translateY(${slideUpOffset + bounceEffect * 20}px)`,
                     }}
                   >
-                    <PlayerCard person={person} />
+                    <PlayerCard person={person} style={{ height: cardHeight }} />
                   </div>
                 );
               })}
