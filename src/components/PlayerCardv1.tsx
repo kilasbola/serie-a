@@ -155,7 +155,12 @@ export const PlayerCard: React.FC<{
             <Calendar className="h-9 w-9 text-green-600" />
             <div>
               <p className="text-1xl text-gray-500 uppercase font-medium" style={{ fontFamily: RubikFont}}>Years</p>
-              <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}>{person.join_year} - {person.end_year}</p>
+                {person.first_period && (
+                <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}> {person.first_period}</p>
+                )}
+                {person.second_period && (
+                <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}> {person.second_period}</p>
+                )}
             </div>
           </div>
 
