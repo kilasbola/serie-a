@@ -21,6 +21,6 @@ Config.setConcurrency(1)
 Config.setVideoImageFormat("png")
 Config.setCodec("h264")
 Config.setBeepOnFinish(true)
-Config.setScale(2)
+Config.setScale(1)
 Config.setAudioCodec('aac'); // Menonaktifkan audio processing
 Config.setCachingEnabled(true);

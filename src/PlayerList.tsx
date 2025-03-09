@@ -12,40 +12,56 @@ import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
 import rawTopPlayers from "../public/data/juventus_fc_players_goals.json";
 import { TopPlayer, validateTopPlayers } from "./types/schema";
-import { RichestCard } from "./components/PlayerCardv1";
+import { PlayerCard } from "./components/PlayerCardv1";
 
 const { fontFamily: rubikFont } = loadRubik();
-
 const cardHeight = 400; // Sesuaikan dengan tinggi sebenarnya
+const screenWidth = 2560; // Resolusi layar animasi
 
+const getStaticCardPosition = (index: number) => {
+  const startPosition = screenWidth / 2 - 1300;
+  return startPosition + index * 650;
+};
 
 const IntroTitle: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const titleSlideUp = useMemo(() => interpolate(frame, [0, 25], [100, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  }), [frame]);
+  const titleSlideUp = useMemo(() => 
+    interpolate(frame, [0, 25], [100, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }), 
+    [frame]
+  );
 
-  const subtitleSlideUp = useMemo(() => interpolate(frame, [15, 40], [100, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  }), [frame]);
+  const subtitleSlideUp = useMemo(() => 
+    interpolate(frame, [15, 40], [100, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }), 
+    [frame]
+  );
 
   return (
-    <div style={{
-      position: "absolute",
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      fontFamily: rubikFont,
-      overflow: "hidden",
-    }}>
-      <h1 style={{ fontSize: "7rem", transform: `translateY(${titleSlideUp}%)` }}>Juventus All-Time Top Scorers</h1>
-      <h2 style={{ fontSize: "4rem", transform: `translateY(${subtitleSlideUp}%)` }}>A Legacy of Goals, A History of Greatness</h2>
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: rubikFont,
+        overflow: "hidden",
+      }}
+    >
+      <h1 style={{ fontSize: "7rem", transform: `translateY(${titleSlideUp}%)` }}>
+        Juventus All-Time Top Scorers
+      </h1>
+      <h2 style={{ fontSize: "4rem", transform: `translateY(${subtitleSlideUp}%)` }}>
+        A Legacy of Goals, A History of Greatness
+      </h2>
     </div>
   );
 };
@@ -57,14 +73,17 @@ export const PlayerList: React.FC = () => {
   const [validatedData, setValidatedData] = useState<TopPlayer[]>([]);
 
   useEffect(() => {
-    try {
-      const data = validateTopPlayers(rawTopPlayers).reverse();
-      setValidatedData(data);
-      continueRender(handle);
-    } catch (error) {
-      console.error("Data validation error:", error);
-      continueRender(handle);
-    }
+    const processData = async () => {
+      try {
+        const data = validateTopPlayers(rawTopPlayers).reverse();
+        setValidatedData(data);
+      } catch (error) {
+        console.error("Data validation error:", error);
+      } finally {
+        continueRender(handle);
+      }
+    };
+    processData();
   }, [handle]);
 
   const introDelay = 120;
@@ -76,84 +95,80 @@ export const PlayerList: React.FC = () => {
   const mainCardsAnimationDuration = initialDelay + 4 * cardEntryDuration;
   const scrollDuration = totalDuration - mainCardsAnimationDuration;
 
-  const getStaticCardPosition = useMemo(() => (index: number) => {
-    const screenWidth = 2560;
-    const startPosition = screenWidth / 2 - 1300;
-    return startPosition + index * 650;
-  }, []);
+  const memoizedData = useMemo(() => validatedData.slice(0, cardsToShow), [validatedData, cardsToShow]);
 
-  const scrollX = useMemo(() => interpolate(
-    frame - mainCardsAnimationDuration,
-    [0, scrollDuration],
-    [0, -650 * (cardsToShow - 1)],
-    { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
-  ), [frame, mainCardsAnimationDuration, scrollDuration, cardsToShow]);
+  const scrollX = useMemo(
+    () =>
+      interpolate(frame - mainCardsAnimationDuration, [0, scrollDuration], [0, -650 * (cardsToShow - 1)], {
+        extrapolateRight: "clamp",
+        extrapolateLeft: "clamp",
+      }),
+    [frame, mainCardsAnimationDuration, scrollDuration, cardsToShow]
+  );
 
   return (
-    <AbsoluteFill>      
+    <AbsoluteFill>
+      {/* Intro Sequence */}
       <Sequence from={0} durationInFrames={introDelay}>
-      <div className="grass">
-        <IntroTitle />
-      </div>
+        <div className="grass">
+          <IntroTitle />
+        </div>
       </Sequence>
+
+      {/* Player List Animation */}
       <Sequence from={introDelay} durationInFrames={totalDuration}>
-      <div className="grass">
-        <div className="h-screen w-full flex items-center justify-center">
-          <div className="flex gap-4" style={{ transform: `translateX(${scrollX}px)` }}>
-            {validatedData.slice(0, cardsToShow).map((person, index) => {
-              const isMainCard = index < 4;
-              const delay = isMainCard
-                ? initialDelay + index * cardEntryDuration
-                : mainCardsAnimationDuration + (index - 4) * staggerDelay;
+        <div className="grass">
+          <div className="h-screen w-full flex items-center justify-center">
+            <div className="flex gap-4" style={{ transform: `translateX(${scrollX}px)` }}>
+              {memoizedData.map((person, index) => {
+                const isMainCard = index < 4;
+                const delay = isMainCard
+                  ? initialDelay + index * cardEntryDuration
+                  : mainCardsAnimationDuration + (index - 4) * staggerDelay;
 
-              const initialPosition = getStaticCardPosition(index);
-              const slideUpOffset = isMainCard
-                ? interpolate(frame - delay - introDelay, [0, 30], [200, 0], {
-                    extrapolateLeft: "clamp",
-                    extrapolateRight: "clamp",
-                  })
-                : 0;
+                const initialPosition = getStaticCardPosition(index);
 
-              const bounceEffect = spring({
-                frame: frame - delay - introDelay,
-                from: 1,
-                to: 0,
-                fps,
-                config: {
-                  damping: 12,
-                  stiffness: 100,
-                  mass: 0.5,
-                },
-              });
+                const slideUpOffset = isMainCard
+                  ? interpolate(frame - delay - introDelay, [0, 30], [200, 0], {
+                      extrapolateLeft: "clamp",
+                      extrapolateRight: "clamp",
+                    })
+                  : 0;
 
-              return (
-                <div
-                  key={person.rank}
-                  className="absolute"
-                  style={{
-                    left: initialPosition,
-                    top: `calc(50% - ${cardHeight / 1.5}px)`,
-                    opacity: interpolate(
-                      frame - delay - introDelay,
-                      [0, 20],
-                      [0, 1],
-                      {
+                const bounceEffect = spring({
+                  frame: frame - delay - introDelay,
+                  from: 1,
+                  to: 0,
+                  fps,
+                  config: {
+                    damping: 10, // Lebih smooth
+                    stiffness: 90,
+                    mass: 0.5,
+                  },
+                });
+
+                return (
+                  <div
+                    key={person.rank}
+                    className="absolute"
+                    style={{
+                      left: initialPosition,
+                      top: `calc(50% - ${cardHeight / 1.46}px)`,
+                      opacity: interpolate(frame - delay - introDelay, [0, 20], [0, 1], {
                         extrapolateLeft: "clamp",
                         extrapolateRight: "clamp",
-                      },
-                    ),
-                    transform: `translateY(${slideUpOffset + bounceEffect * 20}px)`,
-                  }}
-                >
-                  <RichestCard person={person} />
-                </div>
-              );
-            })}
+                      }),
+                      transform: `translateY(${slideUpOffset + bounceEffect * 20}px)`,
+                    }}
+                  >
+                    <PlayerCard person={person} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
       </Sequence>
-      
     </AbsoluteFill>
   );
 };

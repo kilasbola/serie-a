@@ -19,7 +19,7 @@ import { getCountryCode } from "../utils/getCountryCode";
 import { loadFont as loadRoboto } from "@remotion/google-fonts/Roboto";
 import { loadFont as loadRobotoMono } from "@remotion/google-fonts/RobotoMono";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
-import { fontFamily, loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
+import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
 import { useCurrentFrame, interpolate, useVideoConfig, staticFile } from "remotion";
 
 // Load fonts
@@ -28,7 +28,7 @@ const { fontFamily: robotoMonoFont } = loadRobotoMono();
 const { fontFamily: interFont } = loadInter();
 const { fontFamily: RubikFont } = loadRubik();
 
-export const RichestCard: React.FC<{
+export const PlayerCard: React.FC<{
   person: TopPlayer & { club_logo?: string };
   style?: React.CSSProperties;
 }> = ({ person, style }) => {
@@ -63,7 +63,7 @@ export const RichestCard: React.FC<{
     : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
   const displayedScores = Math.round(end * easedProgress);
-
+  const HeightConfig = useVideoConfig().height * 0.94;
   return (
     <div
       className="flex justify-center items-center p-0"
@@ -74,7 +74,7 @@ export const RichestCard: React.FC<{
       }}
     >
       {/* Card dengan desain modern dan profesional */}
-      <div className="w-[600px] h-[1350px] bg-white rounded-xl shadow-5xl">
+      <div className="w-[600px] bg-white rounded-xl shadow-5xl" style={{height: HeightConfig}}>
         {/* Header dengan gradien biru */}
         <div className="relative h-100 rounded-t-xl overflow-hidden" style={{ backgroundImage: `url(${staticFile('background/grass_mini.jpg')})`, backgroundSize: 'cover' }}>
           {/* Rank badge */}
