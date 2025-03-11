@@ -11,8 +11,9 @@ import {
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
 import rawTopPlayers from "../public/data/juventus_fc_players_goals.json";
-import { TopPlayer, validateTopPlayers } from "./types/schema";
+import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
+import { getLogoCode } from "./utils/getLogoClub";
 
 const { fontFamily: rubikFont } = loadRubik();
 
@@ -21,22 +22,46 @@ const getStaticCardPosition = (index: number, screenWidth: number) => {
   return startPosition + index * 650;
 };
 
-const IntroTitle: React.FC = () => {
+const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {  
   const frame = useCurrentFrame();
 
-  const titleSlideUp = useMemo(() => 
-    interpolate(frame, [0, 25], [100, 0], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    }), 
+  if (!person) {
+    return null; // Jika person tidak ada, jangan render apapun
+  }
+
+  const logoSlideDown = useMemo(
+    () =>
+      interpolate(frame, [0, 15], [0, 5], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      }),
     [frame]
   );
 
-  const subtitleSlideUp = useMemo(() => 
-    interpolate(frame, [15, 40], [100, 0], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    }), 
+  const titleSlideUp = useMemo(
+    () =>
+      interpolate(frame, [0, 25], [100, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      }),
+    [frame]
+  );
+
+  const subtitleSlideUp = useMemo(
+    () =>
+      interpolate(frame, [15, 40], [100, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      }),
+    [frame]
+  );
+
+  const presenetBySlideUp = useMemo(
+    () =>
+      interpolate(frame, [15, 40], [100, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      }),
     [frame]
   );
 
@@ -54,15 +79,54 @@ const IntroTitle: React.FC = () => {
         overflow: "hidden",
       }}
     >
-      <h1 style={{ fontSize: "7rem", transform: `translateY(${titleSlideUp}%)` }}>
+      {/* Logo Klub */}
+      <div
+        className="flex justify-center items-center pb-15"
+        style={{ transform: `translateY(${logoSlideDown}%)` }}
+      >
+        <div className="w-100 h-100 flex items-center justify-center overflow-hidden bg-gray-200 rounded-xl">
+          <img
+            src={getLogoCode(person.club)}
+            alt="Club Logo"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Judul */}
+      <h1
+        style={{
+          fontSize: "7rem",
+          fontWeight: "900",
+          transform: `translateY(${titleSlideUp}%)`,
+        }}
+      >
         Juventus All-Time Top Scorers
       </h1>
-      <h2 style={{ fontSize: "4rem", transform: `translateY(${subtitleSlideUp}%)` }}>
+
+      <h2
+        style={{
+          fontSize: "4rem",
+          fontWeight: "700",
+          transform: `translateY(${subtitleSlideUp}%)`,
+        }}
+      >
         A Legacy of Goals, A History of Greatness
       </h2>
+
+      <h3
+        style={{
+          fontSize: "3rem",
+          fontWeight: "600",
+          transform: `translateY(${presenetBySlideUp}%)`,
+        }}
+      >
+        Present by: DANGO BALL
+      </h3>
     </div>
   );
 };
+
 
 export const PlayerList: React.FC = () => {
   const frame = useCurrentFrame();
@@ -112,7 +176,7 @@ export const PlayerList: React.FC = () => {
       {/* Intro Sequence */}
       <Sequence from={0} durationInFrames={introDelay}>
         <div className="grass">
-          <IntroTitle />
+          {memoizedData.length > 0 && <IntroTitle person={memoizedData[0]} />}
         </div>
       </Sequence>
 

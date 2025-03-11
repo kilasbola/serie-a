@@ -12,8 +12,9 @@ export const RemotionRoot: React.FC = () => {
         fps={60}
         width={2560}
         height={1440}
-
-        
+        defaultProps={{
+          url_logos: "",
+        }}
       />
     </>
   );

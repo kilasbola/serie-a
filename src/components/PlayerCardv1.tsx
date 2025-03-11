@@ -15,23 +15,29 @@ import { MdStadium as Stadium,
   MdAccessTimeFilled as Time
  } from "react-icons/md";
 
+import { getLogoCode } from "../utils/getLogoClub";
 import { getCountryCode } from "../utils/getCountryCode";
 import { loadFont as loadRoboto } from "@remotion/google-fonts/Roboto";
 import { loadFont as loadRobotoMono } from "@remotion/google-fonts/RobotoMono";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
+import { loadFont as loadPoppins } from "@remotion/google-fonts/Poppins";
 import { useCurrentFrame, interpolate, useVideoConfig, staticFile } from "remotion";
+
+
 
 // Load fonts
 const { fontFamily: robotoFont } = loadRoboto();
 const { fontFamily: robotoMonoFont } = loadRobotoMono();
 const { fontFamily: interFont } = loadInter();
 const { fontFamily: RubikFont } = loadRubik();
+const { fontFamily: PoppinsFont } = loadPoppins();
+
 
 export const PlayerCard: React.FC<{
   person: TopPlayer & { club_logo?: string };
   style?: React.CSSProperties;
-}> = ({ person, style }) => {
+} > = ({ person, style }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const end = person.goals || 0;
@@ -113,7 +119,7 @@ export const PlayerCard: React.FC<{
               <h1 className="text-5xl font-bold text-gray-800">
                 {person.jersey_name || person.name.split(" ").pop()}
               </h1>
-              <p className="text-2xl text-gray-500 mt-2 font-extrabold" style={{ fontFamily: RubikFont}}>{person.name}</p>
+              <p className="text-2xl text-gray-500 mt-2 font-extrabold tracking-wider" style={{ fontFamily: RubikFont}}>{person.name}</p>
               
                 <div className="flex justify-center mt-4">
                 <span className="bg-gray-800 text-white px-6 py-3 font-bold rounded-full flex items-center gap-3 text-3xl" style={{ willChange: "transform, opacity", fontFamily: RubikFont }}>
@@ -132,6 +138,8 @@ export const PlayerCard: React.FC<{
             </div>
           </div>
         </div>
+
+       
 
         {/* Assists and goals counter dengan desain clean */}
         <div className="px-6 py-4 bg-gray-800 border-t text-4xl border-b border-gray-700">
@@ -154,12 +162,9 @@ export const PlayerCard: React.FC<{
           <div className="flex items-center text-left gap-4">
             <Calendar className="h-9 w-9 text-green-600" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase font-medium" style={{ fontFamily: RubikFont}}>Years</p>
-                {person.first_period && (
-                <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}> {person.first_period}</p>
-                )}
-                {person.second_period && (
-                <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}> {person.second_period}</p>
+                <p className="text-1xl text-gray-400 uppercase font-extrabold tracking-widest" style={{ fontFamily: PoppinsFont}}>Years</p>
+                {person.period && (
+                <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}> {person.period}</p>
                 )}
             </div>
           </div>
@@ -168,7 +173,7 @@ export const PlayerCard: React.FC<{
           <div className="flex items-center text-left gap-4">
             <Field className="h-9 w-9 text-red-500" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase font-medium" style={{ fontFamily: RubikFont}}>Appearance</p>
+            <p className="text-1xl text-gray-400 uppercase font-extrabold tracking-widest" style={{ fontFamily: PoppinsFont}}>Appearance</p>
               <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}>{person.appearances}</p>
             </div>
           </div>
@@ -177,7 +182,7 @@ export const PlayerCard: React.FC<{
           <div className="flex items-center text-left gap-4">
             <Time className="h-9 w-9 text-amber-500" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase font-medium" style={{ fontFamily: RubikFont}}>Minutes Played</p>
+                <p className="text-1xl text-gray-400 uppercase font-extrabold tracking-widest" style={{ fontFamily: PoppinsFont}}>Minutes Played</p>
                 <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}>{person.minutes_played ? person.minutes_played.toLocaleString() : "N/A"}</p>
             </div>
           </div>
@@ -186,7 +191,7 @@ export const PlayerCard: React.FC<{
           <div className="flex items-center text-left gap-4">
             <Birthday className="h-9 w-9 text-purple-500" />
             <div>
-              <p className="text-1xl text-gray-500 uppercase font-medium" style={{ fontFamily: RubikFont}}>Birthday</p>
+              <p className="text-1xl text-gray-400 uppercase font-extrabold tracking-widest" style={{ fontFamily: PoppinsFont}}>Birthday</p>
               <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}>{person.date_of_birth || "N/A"}</p>
             </div>
           </div>
@@ -195,7 +200,7 @@ export const PlayerCard: React.FC<{
           <div className="col-span-2 flex items-center text-left gap-4 p-3 bg-gray-600 rounded-md">
             <Stadium className="h-12 w-12 text-gray-300" />
             <div>
-              <p className="text-1xl text-gray-200 uppercase font-medium" style={{ fontFamily: RubikFont}}>Team</p>
+              <p className="text-1xl text-gray-200 uppercase font-extrabold tracking-widest" style={{ fontFamily: RubikFont}}>Team</p>
                 <p className="text-3xl text-gray-50 font-bold">{person.club || "N/A"}</p>
             </div>
           </div>
@@ -204,7 +209,7 @@ export const PlayerCard: React.FC<{
           <div className="col-span-2 flex items-center text-left gap-4 p-3 bg-gray-600 rounded-md">
             <Position className="h-12 w-12 text-gray-300" />
             <div>
-              <p className="text-1xl text-gray-200 uppercase font-medium" style={{ fontFamily: RubikFont}}>Position</p>
+              <p className="text-1xl text-gray-200 uppercase font-extrabold tracking-widest" style={{ fontFamily: RubikFont}}>Position</p>
               <p className="text-3xl text-gray-50 font-extrabold">{person.position || "Midfielder"}</p>
             </div>
           </div>
@@ -214,9 +219,9 @@ export const PlayerCard: React.FC<{
       
         {/* Logo Klub Bola */}
         <div className="flex justify-center items-center py-2">
-          <div className="w-40 h-40 flex items-center justify-center overflow-hidden bg-gray-200 rounded-md">
+          <div className="w-40 h-40 flex items-center justify-center overflow-hidden bg-gray-600 rounded-md">
             <img
-              src={person.club_logo || "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Juventus_Logo.png/387px-Juventus_Logo.png"}
+              src={getLogoCode(person.club)}
               alt="Club Logo"
               className="w-full h-full object-contain"
             />

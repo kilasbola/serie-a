@@ -16,8 +16,7 @@ export const TopPlayerSchema = z.object({
   position: z.string(),
   jersey_name: z.string(),
   minutes_played: z.number(),
-  first_period: z.string(),
-  second_period: z.string(),
+  period: z.string(),
 });
 
 // Type yang dihasilkan dari schema
