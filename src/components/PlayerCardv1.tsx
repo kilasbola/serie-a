@@ -85,13 +85,13 @@ export const PlayerCard: React.FC<{
         <div className="relative h-100 rounded-t-xl overflow-hidden" style={{ backgroundImage: `url(${staticFile('background/grass_mini.jpg')})`, backgroundSize: 'cover' }}>
           {/* Rank badge */}
           <div className="absolute bottom-10 left-6 w-20 h-20 flex items-center justify-center bg-gray-700 text-white font-semibold text-3xl rounded-full shadow-md" style={{fontFamily: RubikFont}}>
-            #{person.rank}
+            #{person.rank_goals}
           </div>
 
           {/* Pemain - Avatar */}
             <div className="absolute top-10 right-35 w-80 h-80 flex items-center justify-center overflow-hidden rounded-full shadow-md">
             <img
-              src={person.image_url || `https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`}
+              src={person.image_url || `https://i.pravatar.cc/400?img=${(person.rank_goals % 70) + 1}`}
               alt={person.name}
               className="w-full h-full object-cover"
               onError={(e) => {

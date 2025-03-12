@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
-import rawTopPlayers from "../public/data/juventus_fc_players_goals.json";
+import rawTopPlayers from "../public/data/ac_milan_top_goals.json";
 import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
@@ -84,7 +84,7 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
         className="flex justify-center items-center pb-15"
         style={{ transform: `translateY(${logoSlideDown}%)` }}
       >
-        <div className="w-100 h-100 flex items-center justify-center overflow-hidden bg-gray-200 rounded-xl">
+        <div className="w-100 h-100 flex items-center justify-center overflow-hidden rounded-xl">
           <img
             src={getLogoCode(person.club)}
             alt="Club Logo"
@@ -214,7 +214,7 @@ export const PlayerList: React.FC = () => {
 
                 return (
                   <div
-                    key={person.rank}
+                    key={person.rank_goals}
                     className="absolute pt-10"
                     style={{
                       left: initialPosition,

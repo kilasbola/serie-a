@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // Schema untuk data pemain bola
 export const TopPlayerSchema = z.object({
-  rank: z.number(),
+  rank_goals: z.number(),
   name: z.string(),
   image_url: z.string().url(),
   appearances: z.number(),
