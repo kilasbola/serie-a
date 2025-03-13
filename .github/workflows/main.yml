@@ -21,10 +21,8 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Enable Corepack & Setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
+      - name: Install pnpm (Alternative Method)
+        run: npm install -g pnpm
 
       - name: Verify pnpm Installation
         run: |
