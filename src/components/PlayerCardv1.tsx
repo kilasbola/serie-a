@@ -173,7 +173,7 @@ export const PlayerCard: React.FC<{
           <div className="flex items-center text-left gap-4">
             <Field className="h-9 w-9 text-red-500" />
             <div>
-            <p className="text-1xl text-gray-400 uppercase font-extrabold tracking-widest" style={{ fontFamily: PoppinsFont}}>Appearance</p>
+            <p className="text-1xl text-gray-400 uppercase font-extrabold tracking-widest" style={{ fontFamily: PoppinsFont}}>Appearances</p>
               <p className="text-3xl font-extrabold" style={{ fontFamily: interFont}}>{person.appearances}</p>
             </div>
           </div>
