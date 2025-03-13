@@ -6,37 +6,65 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  actions: write  # Dibutuhkan untuk menghapus artifact lama
+
 jobs:
   build-and-render:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: '20.x'
+          cache: 'pnpm'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: latest
 
+      - name: Restore pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-${{ runner.os }}-
+
       - name: Install Dependencies
-        run: pnpm install
-      
+        run: pnpm install --frozen-lockfile
+
       - name: Install Puppeteer Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxrandr2 libgbm1 libxtst6 libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0
-      
+          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+            libdrm2 libxkbcommon0 libxcomposite1 libxrandr2 libgbm1 libxtst6 \
+            libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0
+
+      - name: Check Installed Packages (Debugging)
+        run: dpkg -l
+
+      - name: Delete Old Artifacts
+        run: |
+          echo "Deleting old artifacts..."
+          gh run list --limit 1000 --json databaseId,status | jq -r '.[] | select(.status=="completed") | .databaseId' | xargs -I {} gh run delete {} --confirm
+          echo "Old artifacts deleted."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Render Video
-        run: npx remotion render PlayerListCard out/video.mp4 --disable-audio --verbose
+        run: |
+          echo "Starting video render..."
+          npx remotion render PlayerListCard out/video.mp4 --disable-audio --verbose --disable-dev-shm-usage
+          echo "Render finished!"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: remotion-video
           path: out/video.mp4
-          retention-days: 7
+          retention-days: 1

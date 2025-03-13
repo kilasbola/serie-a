@@ -101,7 +101,7 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
           transform: `translateY(${titleSlideUp}%)`,
         }}
       >
-        Juventus All-Time Top Scorers
+        ACF Fiorentina All-Time Top Scorers
       </h1>
 
       <h2
