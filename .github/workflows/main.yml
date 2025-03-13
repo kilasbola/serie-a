@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: write  # Dibutuhkan untuk menghapus artifact lama
+  actions: write # Dibutuhkan untuk menghapus artifact lama
 
 jobs:
   build-and-render:
@@ -19,13 +19,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-          cache: 'pnpm'
+          node-version: "20.x"
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+      - name: Enable Corepack & Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Verify pnpm Installation
+        run: |
+          pnpm --version
+          echo "pnpm installed successfully!"
 
       - name: Restore pnpm cache
         uses: actions/cache@v4
