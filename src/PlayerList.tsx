@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
-import rawTopPlayers from "../public/data/ac_milan_top_goals.json";
+import rawTopPlayers from "../public/data/acf_fiorentina_top_goals.json";
 import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
