@@ -91,12 +91,14 @@ export const PlayerCard: React.FC<{
           </div>
 
           {/* Pemain - Avatar */}
+          {/* Proxy URL: https://aiodlobyyq.cloudimg.io/v7/ */}
+
+          
             <div className="absolute top-10 right-35 w-80 h-80 flex items-center justify-center overflow-hidden rounded-full shadow-md">
             <img
               src={
-                person.image_url
-                  ? `https://aiodlobyyq.cloudimg.io/v7/${person.image_url}`
-                  : `https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`
+                person.image_url ||
+                `https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`
               }
               alt={person.name}
               className="w-full h-full object-cover"
