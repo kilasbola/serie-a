@@ -67,7 +67,7 @@ export const PlayerCard: React.FC<{
   const easedProgress = progress < 0.5
     ? 2 * progress * progress
     : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
+  
   const displayedScores = Math.round(end * easedProgress);
   const HeightConfig = useVideoConfig().height * 0.94;
   return (
@@ -93,16 +93,21 @@ export const PlayerCard: React.FC<{
           {/* Pemain - Avatar */}
             <div className="absolute top-10 right-35 w-80 h-80 flex items-center justify-center overflow-hidden rounded-full shadow-md">
             <img
-              src={person.image_url || `https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`}
+              src={
+                person.image_url
+                  ? `https://aiodlobyyq.cloudimg.io/v7/${person.image_url}`
+                  : `https://i.pravatar.cc/400?img=${(person.rank % 70) + 1}`
+              }
               alt={person.name}
               className="w-full h-full object-cover"
               onError={(e) => {
-              e.currentTarget.src = 
-              "https://ui-avatars.com/api/?name=" + 
-              encodeURIComponent(person.name) + 
-              "&background=random&size=256";
+                e.currentTarget.src =
+                  "https://ui-avatars.com/api/?name=" +
+                  encodeURIComponent(person.name) +
+                  "&background=random&size=256";
               }}
             />
+
             </div>
 
           
