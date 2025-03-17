@@ -232,7 +232,7 @@ export const PlayerCard: React.FC<{
             <img
               src={getLogoCode(person.club)}
               alt="Club Logo"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain py-3"
             />
           </div>
         </div>
