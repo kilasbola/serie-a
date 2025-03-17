@@ -5,6 +5,7 @@ const clubLogoCodeMap: { [key: string]: string } = {
     'AC Monza': 'https://brandlogos.net/wp-content/uploads/2022/08/ac_monza-logo_brandlogos.net_ymngy.png',
     'AS Roma': 'https://brandlogos.net/wp-content/uploads/2024/04/as_roma-logo_brandlogos.net_50bhu-512x656.png',
     'Atalanta BC': 'https://brandlogos.net/wp-content/uploads/2014/12/atalanta_bc-logo_brandlogos.net_yq22a-512x839.png',
+    'Bologna FC 1909': 'https://brandlogos.net/wp-content/uploads/2014/12/bologna_fc_1909-logo_brandlogos.net_vf54h-512x744.png',
 };
 
 export const getLogoCode = (clubCode: string): string => {
