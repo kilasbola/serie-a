@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
-import rawTopPlayers from "../public/data/bologna_fc_1909_top_goals.json";
+import rawTopPlayers from "../public/data/cagliari_calcio_top_goals.json";
 import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
@@ -101,7 +101,7 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
           transform: `translateY(${titleSlideUp}%)`,
         }}
       >
-        Bologna FC 1909 All-Time Top Scorers
+        Cagliari Calcio All-Time Top Scorers
       </h1>
 
       <h2
