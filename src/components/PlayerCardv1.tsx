@@ -228,7 +228,7 @@ export const PlayerCard: React.FC<{
       
         {/* Logo Klub Bola */}
         <div className="flex justify-center items-center py-2">
-          <div className="w-40 h-40 flex items-center justify-center overflow-hidden bg-gray-100 rounded-md">
+          <div className="w-40 h-40 flex items-center justify-center overflow-hidden bg-gray-700 rounded-md">
             <img
               src={getLogoCode(person.club)}
               alt="Club Logo"
