@@ -249,6 +249,7 @@ const countryCodeMap: { [key: string]: string } = {
     'zm': 'zm', // Zambia
     'zw': 'zw', // Zimbabwe
     'gb-wls': 'gb-wls', // Wales
+    'gb-eng': 'gb-eng', // Wales
 };
 
 export const getCountryCode = (countryCode: string): string => {
