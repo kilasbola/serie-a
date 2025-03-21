@@ -8,7 +8,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="PlayerListCard"
         component={PlayerList}
-        durationInFrames={60*200} // 15.5 seconds (60fps * 15.5 seconds)
+        durationInFrames={60*10} // default 60*200
         fps={60}
         width={2560}
         height={1440}
