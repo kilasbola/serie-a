@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
-import rawTopPlayers from "../public/data/ss_lazio_top_goals.json";
+import rawTopPlayers from "../public/data/ssc_napoli_top_goals.json";
 import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
@@ -101,7 +101,7 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
           transform: `translateY(${titleSlideUp}%)`,
         }}
       >
-        SS Lazio All-Time Top Scorers
+        SSC Napoli All-Time Top Scorers
       </h1>
 
       <h2
