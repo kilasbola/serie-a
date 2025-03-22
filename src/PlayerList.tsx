@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
-import rawTopPlayers from "../public/data/us_lecce_top_goals.json";
+import rawTopPlayers from "../public/data/venezia_fc_top_goals.json";
 import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
@@ -101,7 +101,7 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
           transform: `translateY(${titleSlideUp}%)`,
         }}
       >
-        US Lecce All-Time Top Scorers
+        Venezia FC All-Time Top Scorers
       </h1>
 
       <h2
