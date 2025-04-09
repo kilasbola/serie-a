@@ -15,8 +15,8 @@ import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
 
 // import rawTopPlayers from "../public/id/arema_fc_top_goals.json";
-import rawTopPlayers from "../public/id/bali_united_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/bhayangkara_presisi_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/bali_united_fc_top_goals.json";
+import rawTopPlayers from "../public/id/bhayangkara_presisi_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/borneo_fc_samarinda_top_goals.json";
 // import rawTopPlayers from "../public/id/deltras_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/dewa_united_fc_top_goals.json";
