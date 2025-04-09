@@ -84,7 +84,7 @@ export const PlayerCard: React.FC<{
         {/* Header dengan gradien biru */}
         <div className="relative h-100 rounded-t-xl overflow-hidden" style={{ backgroundImage: `url(${staticFile('background/grass_mini.jpg')})`, backgroundSize: 'cover' }}>
           {/* Rank badge */}
-          <div className="absolute bottom-10 left-6 w-20 h-20 flex items-center justify-center bg-gray-700 text-white font-semibold text-3xl rounded-full shadow-md" style={{fontFamily: RubikFont}}>
+          <div className="absolute bottom-10 left-6 w-30 h-30 flex items-center justify-center bg-gray-700 text-white font-semibold text-5xl rounded-full shadow-md" style={{fontFamily: RubikFont}}>
             {person.rank && (
                 <>{person.rank}</>
             )}
@@ -125,7 +125,7 @@ export const PlayerCard: React.FC<{
           <div className="flex flex-col items-center text-center">
             {/* Player name dan info */}
             <div className="flex-grow">
-              <h1 className="text-5xl font-bold text-gray-800">
+              <h1 className="text-6xl font-bold text-gray-800">
                 {person.jersey_name || person.name.split(" ").pop()}
               </h1>
               <p className="text-2xl text-gray-500 mt-2 font-extrabold tracking-wider" style={{ fontFamily: RubikFont}}>{person.name}</p>
@@ -151,13 +151,13 @@ export const PlayerCard: React.FC<{
        
 
         {/* Assists and goals counter dengan desain clean */}
-        <div className="px-6 py-4 bg-gray-800 border-t text-4xl border-b border-gray-700">
+        <div className="px-6 py-4 bg-gray-800 border-t text-5xl border-b border-gray-700">
           <div className="flex items-center justify-between">
             <p className="text-gray-200 font-bold" style={{ fontFamily: robotoMonoFont }}>
               TOTAL GOALS
             </p>
             <div className="flex items-center gap-2 bg-gray-600 rounded-md px-3 py-2">
-              <Football className="w-9 h-9 text-gray-200" />
+              <Football className="w-12 h-12 text-gray-200" />
               <span className="text-white font-bold" style={{ fontFamily: robotoMonoFont }}>
                {displayedScores}
               </span>
@@ -166,7 +166,7 @@ export const PlayerCard: React.FC<{
         </div>
 
         {/* Player details dengan grid layout yang lebih elegan */}
-        <div className="grid grid-cols-2 gap-8 p-8">
+        <div className="grid grid-cols-2 gap-8 p-5">
           {/* year */}
           <div className="flex items-center text-left gap-4">
             <Calendar className="h-9 w-9 text-green-600" />
@@ -206,7 +206,7 @@ export const PlayerCard: React.FC<{
           </div>
 
           {/* Team - Full width */}
-          <div className="col-span-2 flex items-center text-left gap-4 p-3 bg-gray-600 rounded-md">
+          <div className="col-span-2 flex items-center text-left gap-4 p-3 bg-gray-900 rounded-md">
             <Stadium className="h-12 w-12 text-gray-300" />
             <div>
               <p className="text-1xl text-gray-200 uppercase font-extrabold tracking-widest" style={{ fontFamily: RubikFont}}>Team</p>
@@ -215,7 +215,7 @@ export const PlayerCard: React.FC<{
           </div>
 
           {/* Position - Full width */}
-          <div className="col-span-2 flex items-center text-left gap-4 p-3 bg-gray-600 rounded-md">
+          <div className="col-span-2 flex items-center text-left gap-4 p-3 bg-gray-900 rounded-md">
             <Position className="h-12 w-12 text-gray-300" />
             <div>
               <p className="text-1xl text-gray-200 uppercase font-extrabold tracking-widest" style={{ fontFamily: RubikFont}}>Position</p>
@@ -228,11 +228,11 @@ export const PlayerCard: React.FC<{
       
         {/* Logo Klub Bola */}
         <div className="flex justify-center items-center py-2">
-          <div className="w-40 h-40 flex items-center justify-center overflow-hidden bg-gray-300 rounded-md">
+          <div className="w-45 h-45 flex items-center justify-center overflow-hidden bg-gray-0 rounded-md">
             <img
               src={getLogoCode(person.club)}
               alt="Club Logo"
-              className="w-full h-full object-contain py-3"
+              className="w-full h-full object-contain py-1"
             />
           </div>
         </div>

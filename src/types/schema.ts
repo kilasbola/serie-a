@@ -13,7 +13,7 @@ export const TopPlayerSchema = z.object({
   nation: z.string(),
   nation_code: z.string(),
   club: z.string(),
-  height: z.string(),
+  // height: z.string(),
   date_of_birth: z.string(),
   position: z.string(),
   jersey_name: z.string(),

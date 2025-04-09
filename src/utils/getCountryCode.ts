@@ -26,7 +26,7 @@ const countryCodeMap: { [key: string]: string } = {
     'bj': 'bj', // Benin
     'bl': 'bl', // Saint Barthélemy
     'bm': 'bm', // Bermuda
-    'bn': 'bn', // Brunei Darussalam
+    'bn': 'bn', // Brunei Darussalam 
     'bo': 'bo', // Bolivia
     'bq': 'bq', // Bonaire, Sint Eustatius and Saba
     'br': 'br', // Brazil
@@ -248,8 +248,15 @@ const countryCodeMap: { [key: string]: string } = {
     'za': 'za', // South Africa
     'zm': 'zm', // Zambia
     'zw': 'zw', // Zimbabwe
+   
+
     'gb-wls': 'gb-wls', // Wales
-    'gb-eng': 'gb-eng', // Wales
+    'gb-eng': 'gb-eng', // England
+    'gb-sct': 'gb-sct', // Scotland
+    'gb-nir': 'gb-nir', // Northern Ireland
+    'gb-gib': 'gb-gib', // Gibraltar
+    'gb-gg': 'gb-gg', // Guernsey 
+    
 };
 
 export const getCountryCode = (countryCode: string): string => {

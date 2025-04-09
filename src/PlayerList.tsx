@@ -10,10 +10,41 @@ import {
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
-import rawTopPlayers from "../public/data/ss_lazio_top_goals.json";
 import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
+
+import rawTopPlayers from "../public/id/arema_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/bali_united_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/bhayangkara_presisi_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/borneo_fc_samarinda_top_goals.json";
+// import rawTopPlayers from "../public/id/deltras_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/dewa_united_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/madura_united_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/malut_united_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/persebaya_surabaya_top_goals.json";
+// import rawTopPlayers from "../public/id/persela_lamongan_top_goals.json";
+// import rawTopPlayers from "../public/id/persib_bandung_top_goals.json";
+// import rawTopPlayers from "../public/id/persijap_jepara_top_goals.json";
+// import rawTopPlayers from "../public/id/persija_jakarta_top_goals.json";
+// import rawTopPlayers from "../public/id/persikabo_1973_top_goals.json";
+// import rawTopPlayers from "../public/id/persik_kediri_top_goals.json";
+// import rawTopPlayers from "../public/id/persipura_jayapura_top_goals.json";
+// import rawTopPlayers from "../public/id/persiraja_banda_aceh_top_goals.json";
+// import rawTopPlayers from "../public/id/persis_solo_top_goals.json";
+// import rawTopPlayers from "../public/id/persita_tangerang_top_goals.json";
+// import rawTopPlayers from "../public/id/psbs_biak_top_goals.json";
+// import rawTopPlayers from "../public/id/psim_yogyakarta_top_goals.json";
+// import rawTopPlayers from "../public/id/psis_semarang_top_goals.json";
+// import rawTopPlayers from "../public/id/pskc_cimahi_top_goals.json";
+// import rawTopPlayers from "../public/id/psms_medan_top_goals.json";
+// import rawTopPlayers from "../public/id/psm_makassar_top_goals.json";
+// import rawTopPlayers from "../public/id/psps_pekanbaru_top_goals.json";
+// import rawTopPlayers from "../public/id/pss_sleman_top_goals.json";
+// import rawTopPlayers from "../public/id/ps_barito_putera_top_goals.json";
+// import rawTopPlayers from "../public/id/rans_nusantara_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/semen_padang_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/sriwijaya_fc_top_goals.json";
 
 const { fontFamily: rubikFont } = loadRubik();
 
@@ -81,10 +112,10 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
     >
       {/* Logo Klub */}
       <div
-        className="flex justify-center items-center pb-15"
+        className="flex justify-center items-center pb-5"
         style={{ transform: `translateY(${logoSlideDown}%)` }}
       >
-        <div className="w-100 h-100 flex items-center justify-center overflow-hidden rounded-xl">
+        <div className="w-150 h-150 flex items-center justify-center overflow-hidden rounded-xl">
           <img
             src={getLogoCode(person.club)}
             alt="Club Logo"
@@ -101,8 +132,18 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
           transform: `translateY(${titleSlideUp}%)`,
         }}
       >
-        SS Lazio All-Time Top Scorers
+        {person.club}
       </h1>
+      
+      <h2
+        style={{
+          fontSize: "5rem",
+          fontWeight: "700",
+          transform: `translateY(${subtitleSlideUp}%)`,
+        }}
+      >
+        All-Time Top Scorers
+      </h2>
 
       <h2
         style={{
