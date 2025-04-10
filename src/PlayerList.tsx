@@ -41,8 +41,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/id/psm_makassar_top_goals.json";
 // import rawTopPlayers from "../public/id/psps_pekanbaru_top_goals.json";
 // import rawTopPlayers from "../public/id/pss_sleman_top_goals.json";
-import rawTopPlayers from "../public/id/ps_barito_putera_top_goals.json";
-// import rawTopPlayers from "../public/id/rans_nusantara_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/ps_barito_putera_top_goals.json";
+import rawTopPlayers from "../public/id/rans_nusantara_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/semen_padang_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/sriwijaya_fc_top_goals.json";
 
