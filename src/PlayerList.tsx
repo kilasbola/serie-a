@@ -24,7 +24,7 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/id/malut_united_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/persebaya_surabaya_top_goals.json";
 // import rawTopPlayers from "../public/id/persela_lamongan_top_goals.json";
-// import rawTopPlayers from "../public/id/persib_bandung_top_goals.json";
+import rawTopPlayers from "../public/id/persib_bandung_top_goals.json";
 // import rawTopPlayers from "../public/id/persijap_jepara_top_goals.json";
 // import rawTopPlayers from "../public/id/persija_jakarta_top_goals.json";
 // import rawTopPlayers from "../public/id/persikabo_1973_top_goals.json";
@@ -43,7 +43,7 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/id/pss_sleman_top_goals.json";
 // import rawTopPlayers from "../public/id/ps_barito_putera_top_goals.json";
 // import rawTopPlayers from "../public/id/rans_nusantara_fc_top_goals.json";
-import rawTopPlayers from "../public/id/semen_padang_fc_top_goals.json";
+// import rawTopPlayers from "../public/id/semen_padang_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/sriwijaya_fc_top_goals.json";
 
 const { fontFamily: rubikFont } = loadRubik();
