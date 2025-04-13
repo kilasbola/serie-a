@@ -27,10 +27,10 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/id/persib_bandung_top_goals.json";
 // import rawTopPlayers from "../public/id/persijap_jepara_top_goals.json"; //
 // import rawTopPlayers from "../public/id/persija_jakarta_top_goals.json";
-import rawTopPlayers from "../public/id/persikabo_1973_top_goals.json"; //
+// import rawTopPlayers from "../public/id/persikabo_1973_top_goals.json"; //
 // import rawTopPlayers from "../public/id/persik_kediri_top_goals.json";
 // import rawTopPlayers from "../public/id/persipura_jayapura_top_goals.json";
-// import rawTopPlayers from "../public/id/persiraja_banda_aceh_top_goals.json"; //
+import rawTopPlayers from "../public/id/persiraja_banda_aceh_top_goals.json"; //
 // import rawTopPlayers from "../public/id/persis_solo_top_goals.json";
 // import rawTopPlayers from "../public/id/persita_tangerang_top_goals.json";
 // import rawTopPlayers from "../public/id/psbs_biak_top_goals.json"; //
