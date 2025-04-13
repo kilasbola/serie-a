@@ -14,37 +14,24 @@ import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
 
-// import rawTopPlayers from "../public/id/arema_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/bali_united_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/bhayangkara_presisi_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/borneo_fc_samarinda_top_goals.json";
-// import rawTopPlayers from "../public/id/deltras_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/dewa_united_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/madura_united_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/malut_united_fc_top_goals.json"; //
-// import rawTopPlayers from "../public/id/persebaya_surabaya_top_goals.json";
-// import rawTopPlayers from "../public/id/persela_lamongan_top_goals.json";
-// import rawTopPlayers from "../public/id/persib_bandung_top_goals.json";
-// import rawTopPlayers from "../public/id/persijap_jepara_top_goals.json"; //
-// import rawTopPlayers from "../public/id/persija_jakarta_top_goals.json";
-// import rawTopPlayers from "../public/id/persikabo_1973_top_goals.json"; //
-// import rawTopPlayers from "../public/id/persik_kediri_top_goals.json";
-// import rawTopPlayers from "../public/id/persipura_jayapura_top_goals.json";
-import rawTopPlayers from "../public/id/persiraja_banda_aceh_top_goals.json"; //
-// import rawTopPlayers from "../public/id/persis_solo_top_goals.json";
-// import rawTopPlayers from "../public/id/persita_tangerang_top_goals.json";
-// import rawTopPlayers from "../public/id/psbs_biak_top_goals.json"; //
-// import rawTopPlayers from "../public/id/psim_yogyakarta_top_goals.json";
-// import rawTopPlayers from "../public/id/psis_semarang_top_goals.json";
-// import rawTopPlayers from "../public/id/pskc_cimahi_top_goals.json"; //
-// import rawTopPlayers from "../public/id/psms_medan_top_goals.json";
-// import rawTopPlayers from "../public/id/psm_makassar_top_goals.json";
-// import rawTopPlayers from "../public/id/psps_pekanbaru_top_goals.json";
-// import rawTopPlayers from "../public/id/pss_sleman_top_goals.json";
-// import rawTopPlayers from "../public/id/ps_barito_putera_top_goals.json";
-// import rawTopPlayers from "../public/id/rans_nusantara_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/semen_padang_fc_top_goals.json";
-// import rawTopPlayers from "../public/id/sriwijaya_fc_top_goals.json";
+import rawTopPlayers from "../public/de/1.fc_heidenheim_1846_top_goals.json";
+// import rawTopPlayers from "../public/de/1.fc_union_berlin_top_goals.json";
+// import rawTopPlayers from "../public/de/1.fsv_mainz_05_top_goals.json";
+// import rawTopPlayers from "../public/de/bayern_munich_top_goals.json";
+// import rawTopPlayers from "../public/de/bayer_04_leverkusen_top_goals.json";
+// import rawTopPlayers from "../public/de/borussia_dortmund_top_goals.json";
+// import rawTopPlayers from "../public/de/borussia_mönchengladbach_top_goals.json";
+// import rawTopPlayers from "../public/de/eintracht_frankfurt_top_goals.json";
+// import rawTopPlayers from "../public/de/fc_augsburg_top_goals.json";
+// import rawTopPlayers from "../public/de/fc_st._pauli_top_goals.json";
+// import rawTopPlayers from "../public/de/holstein_kiel_top_goals.json";
+// import rawTopPlayers from "../public/de/rb_leipzig_top_goals.json";
+// import rawTopPlayers from "../public/de/sc_freiburg_top_goals.json";
+// import rawTopPlayers from "../public/de/sv_werder_bremen_top_goals.json";
+// import rawTopPlayers from "../public/de/tsg_1899_hoffenheim_top_goals.json";
+// import rawTopPlayers from "../public/de/vfb_stuttgart_top_goals.json";
+// import rawTopPlayers from "../public/de/vfl_bochum_top_goals.json";
+// import rawTopPlayers from "../public/de/vfl_wolfsburg_top_goals.json";
 
 const { fontFamily: rubikFont } = loadRubik();
 
