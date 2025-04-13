@@ -17,8 +17,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/de/1.fc_heidenheim_1846_top_goals.json"; 1
 // import rawTopPlayers from "../public/de/1.fc_union_berlin_top_goals.json";
 // import rawTopPlayers from "../public/de/1.fsv_mainz_05_top_goals.json";
-import rawTopPlayers from "../public/de/bayern_munich_top_goals.json";
-// import rawTopPlayers from "../public/de/bayer_04_leverkusen_top_goals.json";
+// import rawTopPlayers from "../public/de/bayern_munich_top_goals.json";
+import rawTopPlayers from "../public/de/bayer_04_leverkusen_top_goals.json";
 // import rawTopPlayers from "../public/de/borussia_dortmund_top_goals.json";
 // import rawTopPlayers from "../public/de/borussia_mönchengladbach_top_goals.json";
 // import rawTopPlayers from "../public/de/eintracht_frankfurt_top_goals.json";
