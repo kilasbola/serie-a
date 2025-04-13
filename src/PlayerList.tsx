@@ -21,11 +21,11 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/id/deltras_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/dewa_united_fc_top_goals.json";
 // import rawTopPlayers from "../public/id/madura_united_fc_top_goals.json";
-import rawTopPlayers from "../public/id/malut_united_fc_top_goals.json"; //
+// import rawTopPlayers from "../public/id/malut_united_fc_top_goals.json"; //
 // import rawTopPlayers from "../public/id/persebaya_surabaya_top_goals.json";
 // import rawTopPlayers from "../public/id/persela_lamongan_top_goals.json";
 // import rawTopPlayers from "../public/id/persib_bandung_top_goals.json";
-// import rawTopPlayers from "../public/id/persijap_jepara_top_goals.json"; //
+import rawTopPlayers from "../public/id/persijap_jepara_top_goals.json"; //
 // import rawTopPlayers from "../public/id/persija_jakarta_top_goals.json";
 // import rawTopPlayers from "../public/id/persikabo_1973_top_goals.json"; //
 // import rawTopPlayers from "../public/id/persik_kediri_top_goals.json";
