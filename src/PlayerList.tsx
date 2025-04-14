@@ -21,7 +21,7 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/de/bayer_04_leverkusen_top_goals.json";
 // import rawTopPlayers from "../public/de/borussia_dortmund_top_goals.json";
 // import rawTopPlayers from "../public/de/borussia_mönchengladbach_top_goals.json";
-// import rawTopPlayers from "../public/de/eintracht_frankfurt_top_goals.json";
+import rawTopPlayers from "../public/de/eintracht_frankfurt_top_goals.json";
 // import rawTopPlayers from "../public/de/fc_augsburg_top_goals.json";
 // import rawTopPlayers from "../public/de/fc_st._pauli_top_goals.json";
 // import rawTopPlayers from "../public/de/holstein_kiel_top_goals.json";
@@ -31,7 +31,7 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/de/tsg_1899_hoffenheim_top_goals.json";
 // import rawTopPlayers from "../public/de/vfb_stuttgart_top_goals.json";
 // import rawTopPlayers from "../public/de/vfl_bochum_top_goals.json";
-import rawTopPlayers from "../public/de/vfl_wolfsburg_top_goals.json";
+// import rawTopPlayers from "../public/de/vfl_wolfsburg_top_goals.json";
 
 const { fontFamily: rubikFont } = loadRubik();
 
