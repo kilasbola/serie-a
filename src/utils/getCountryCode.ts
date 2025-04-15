@@ -38,7 +38,7 @@ const countryCodeMap: { [key: string]: string } = {
     'bz': 'bz', // Belize
     'ca': 'ca', // Canada
     'cc': 'cc', // Cocos (Keeling) Islands
-    'cd': 'cd', // Congo
+    'cd': 'cd', // DR Congo
     'cf': 'cf', // Central African Republic
     'cg': 'cg', // Congo
     'ch': 'ch', // Switzerland
