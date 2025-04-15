@@ -7,6 +7,8 @@ import {
   spring,
   delayRender,
   continueRender,
+  Audio,
+  staticFile,
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
 import { loadFont as loadRubik } from "@remotion/google-fonts/Rubik";
@@ -158,7 +160,7 @@ const IntroTitle: React.FC<{ person?: TopPlayer }> = ({ person }) => {
 
 export const PlayerList: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps, width, height } = useVideoConfig();
+  const { fps, width, height, } = useVideoConfig();
   const [handle] = useState(() => delayRender("timeout-60000")); // Tambahkan timeout 60 detik
   const [validatedData, setValidatedData] = useState<TopPlayer[]>([]);
 
@@ -177,7 +179,7 @@ export const PlayerList: React.FC = () => {
   }, [handle]);
 
   const introDelay = 120;
-  const totalDuration = fps * 200;
+  const totalDuration = fps * 200; // 210 detik
   const cardsToShow = 30;
   const initialDelay = 30;
   const cardEntryDuration = 30;
@@ -212,54 +214,74 @@ export const PlayerList: React.FC = () => {
       <Sequence from={introDelay} durationInFrames={totalDuration}>
         <div className="grass">
           <div className="w-full flex items-center justify-center">
-            <div className="flex gap-4" style={{ transform: `translateX(${scrollX}px)` }}>
-              {memoizedData.map((person, index) => {
-                const isMainCard = index < 4;
-                const delay = isMainCard
-                  ? initialDelay + index * cardEntryDuration
-                  : mainCardsAnimationDuration + (index - 4) * staggerDelay;
+        <div className="flex gap-4" style={{ transform: `translateX(${scrollX}px)` }}>
+          {memoizedData.map((person, index) => {
+        const isMainCard = index < 4;
+        const delay = isMainCard
+          ? initialDelay + index * cardEntryDuration
+          : mainCardsAnimationDuration + (index - 4) * staggerDelay;
 
-                const initialPosition = getStaticCardPosition(index, width);
+        const initialPosition = getStaticCardPosition(index, width);
 
-                const slideUpOffset = isMainCard
-                  ? interpolate(frame - delay - introDelay, [0, 30], [200, 0], {
-                      extrapolateLeft: "clamp",
-                      extrapolateRight: "clamp",
-                    })
-                  : 0;
+        const slideUpOffset = isMainCard
+          ? interpolate(frame - delay - introDelay, [0, 30], [200, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        })
+          : 0;
 
-                const bounceEffect = spring({
-                  frame: frame - delay - introDelay,
-                  from: 1,
-                  to: 0,
-                  fps,
-                  config: {
-                    damping: 10, // Lebih smooth
-                    stiffness: 90,
-                    mass: 0.5,
-                  },
-                });
+        const bounceEffect = spring({
+          frame: frame - delay - introDelay,
+          from: 1,
+          to: 0,
+          fps,
+          config: {
+        damping: 10, // Lebih smooth
+        stiffness: 90,
+        mass: 0.5,
+          },
+        });
 
-                return (
-                  <div
-                    key={person.rank }
-                    className="absolute pt-10"
-                    style={{
-                      left: initialPosition,
-                      opacity: interpolate(frame - delay - introDelay, [0, 20], [0, 1], {
-                        extrapolateLeft: "clamp",
-                        extrapolateRight: "clamp",
-                      }),
-                      transform: `translateY(${slideUpOffset + bounceEffect * 20}px)`,
-                    }}
-                  >
-                    <PlayerCard person={person} style={{ height: cardHeight }} />
-                  </div>
-                );
-              })}
-            </div>
+        return (
+          <div
+        key={person.rank}
+        className="absolute pt-10"
+        style={{
+          left: initialPosition,
+          opacity: interpolate(frame - delay - introDelay, [0, 20], [0, 1], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+          }),
+          transform: `translateY(${slideUpOffset + bounceEffect * 20}px)`,
+        }}
+          >
+        <PlayerCard person={person} style={{ height: cardHeight }} />
+          </div>
+        );
+          })}
+        </div>
           </div>
         </div>
+        <Audio
+          volume={(f) =>
+        interpolate(
+          f,
+          [0, 30, totalDuration - 10 * fps, totalDuration],
+          [0, 0.5, 0.5, 0],
+          { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
+        )
+          }
+          src={staticFile("_audio/parzival_william_rosati.mp3")}
+          startFrom={120}
+        />
+      </Sequence>
+      
+      <Sequence from={12080}>
+        <video
+          src={staticFile("_audio/outro.mp4")}
+          style={{ width: "100%", height: "100%" }}
+          autoPlay
+        />
       </Sequence>
     </AbsoluteFill>
   );
