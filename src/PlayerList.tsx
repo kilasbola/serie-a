@@ -32,8 +32,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/fr/paris_saint-germain_top_goals.json";
 // import rawTopPlayers from "../public/fr/rc_lens_top_goals.json";
 // import rawTopPlayers from "../public/fr/rc_strasbourg_alsace_top_goals.json";
-// import rawTopPlayers from "../public/fr/stade_brestois_29_top_goals.json";
-import rawTopPlayers from "../public/fr/stade_reims_top_goals.json";
+import rawTopPlayers from "../public/fr/stade_brestois_29_top_goals.json";
+// import rawTopPlayers from "../public/fr/stade_reims_top_goals.json";
 // import rawTopPlayers from "../public/fr/stade_rennais_fc_top_goals.json";
 
 const { fontFamily: rubikFont } = loadRubik();
