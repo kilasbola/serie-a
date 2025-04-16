@@ -33,8 +33,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/fr/rc_lens_top_goals.json";
 // import rawTopPlayers from "../public/fr/rc_strasbourg_alsace_top_goals.json";
 // import rawTopPlayers from "../public/fr/stade_brestois_29_top_goals.json";
-// import rawTopPlayers from "../public/fr/stade_reims_top_goals.json";
-import rawTopPlayers from "../public/fr/stade_rennais_fc_top_goals.json";
+import rawTopPlayers from "../public/fr/stade_reims_top_goals.json";
+// import rawTopPlayers from "../public/fr/stade_rennais_fc_top_goals.json";
 
 const { fontFamily: rubikFont } = loadRubik();
 
@@ -277,7 +277,7 @@ export const PlayerList: React.FC = () => {
         />
       </Sequence>
       
-      <Sequence from={12080}>
+      <Sequence from={12090}>
         <OffthreadVideo
           src={staticFile("_audio/outro.mp4")}
           style={{ width: "100%", height: "100%" }}
