@@ -8,6 +8,7 @@ import {
   delayRender,
   continueRender,
   Audio,
+  OffthreadVideo,
   staticFile,
 } from "remotion";
 import React, { useMemo, useEffect, useState } from "react";
@@ -277,10 +278,9 @@ export const PlayerList: React.FC = () => {
       </Sequence>
       
       <Sequence from={12080}>
-        <video
+        <OffthreadVideo
           src={staticFile("_audio/outro.mp4")}
           style={{ width: "100%", height: "100%" }}
-          autoPlay
         />
       </Sequence>
     </AbsoluteFill>
