@@ -17,25 +17,28 @@ import { TopPlayer, validateTopPlayers, } from "./types/schema";
 import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
 
-import rawTopPlayers from "../public/fr/aj_auxerre_top_goals.json";
-// import rawTopPlayers from "../public/fr/angers_sco_top_goals.json";
-// import rawTopPlayers from "../public/fr/as_monaco_top_goals.json";
-// import rawTopPlayers from "../public/fr/as_saint-étienne_top_goals.json";
-// import rawTopPlayers from "../public/fr/fc_nantes_top_goals.json";
-// import rawTopPlayers from "../public/fr/fc_toulouse_top_goals.json";
-// import rawTopPlayers from "../public/fr/le_havre_ac_top_goals.json";
-// import rawTopPlayers from "../public/fr/losc_lille_top_goals.json";
-// import rawTopPlayers from "../public/fr/montpellier_hsc_top_goals.json";
 
-// import rawTopPlayers from "../public/fr/ogc_nice_top_goals.json";
-// import rawTopPlayers from "../public/fr/olympique_lyon_top_goals.json";
-// import rawTopPlayers from "../public/fr/olympique_marseille_top_goals.json";
-// import rawTopPlayers from "../public/fr/paris_saint-germain_top_goals.json";
-// import rawTopPlayers from "../public/fr/rc_lens_top_goals.json";
-// import rawTopPlayers from "../public/fr/rc_strasbourg_alsace_top_goals.json";
-// import rawTopPlayers from "../public/fr/stade_brestois_29_top_goals.json";
-// import rawTopPlayers from "../public/fr/stade_reims_top_goals.json";
-// import rawTopPlayers from "../public/fr/stade_rennais_fc_top_goals.json";
+import rawTopPlayers from "../public/es/athletic_bilbao_top_goals.json";
+// import rawTopPlayers from "../public/es/atlético_de_madrid_top_goals.json";
+// import rawTopPlayers from "../public/es/ca_osasuna_top_goals.json";
+// import rawTopPlayers from "../public/es/cd_leganés_top_goals.json";
+// import rawTopPlayers from "../public/es/celta_de_vigo_top_goals.json";
+// import rawTopPlayers from "../public/es/deportivo_alavés_top_goals.json";
+// import rawTopPlayers from "../public/es/fc_barcelona_top_goals.json";
+// import rawTopPlayers from "../public/es/getafe_cf_top_goals.json";
+// import rawTopPlayers from "../public/es/girona_fc_top_goals.json";
+// import rawTopPlayers from "../public/es/rayo_vallecano_top_goals.json";
+// import rawTopPlayers from "../public/es/rcd_espanyol_barcelona_top_goals.json";
+// import rawTopPlayers from "../public/es/rcd_mallorca_top_goals.json";
+// import rawTopPlayers from "../public/es/real_betis_balompié_top_goals.json";
+// import rawTopPlayers from "../public/es/real_madrid_top_goals.json";
+// import rawTopPlayers from "../public/es/real_sociedad_top_goals.json";
+// import rawTopPlayers from "../public/es/real_valladolid_cf_top_goals.json";
+// import rawTopPlayers from "../public/es/sevilla_fc_top_goals.json";
+// import rawTopPlayers from "../public/es/ud_las_palmas_top_goals.json";
+// import rawTopPlayers from "../public/es/valencia_cf_top_goals.json";
+// import rawTopPlayers from "../public/es/villarreal_cf_top_goals.json";
+
 
 const { fontFamily: rubikFont } = loadRubik();
 
