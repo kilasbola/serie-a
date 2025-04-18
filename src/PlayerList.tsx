@@ -23,8 +23,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/fr/as_saint-étienne_top_goals.json";
 // import rawTopPlayers from "../public/fr/fc_nantes_top_goals.json";
 // import rawTopPlayers from "../public/fr/fc_toulouse_top_goals.json";
-// import rawTopPlayers from "../public/fr/le_havre_ac_top_goals.json";
-import rawTopPlayers from "../public/fr/losc_lille_top_goals.json";
+import rawTopPlayers from "../public/fr/le_havre_ac_top_goals.json";
+// import rawTopPlayers from "../public/fr/losc_lille_top_goals.json";
 // import rawTopPlayers from "../public/fr/montpellier_hsc_top_goals.json";
 
 // import rawTopPlayers from "../public/fr/ogc_nice_top_goals.json";
