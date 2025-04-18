@@ -18,8 +18,8 @@ import { PlayerCard } from "./components/PlayerCardv1";
 import { getLogoCode } from "./utils/getLogoClub";
 
 
-import rawTopPlayers from "../public/es/athletic_bilbao_top_goals.json";
-// import rawTopPlayers from "../public/es/atlético_de_madrid_top_goals.json";
+// import rawTopPlayers from "../public/es/athletic_bilbao_top_goals.json";
+import rawTopPlayers from "../public/es/atlético_de_madrid_top_goals.json";
 // import rawTopPlayers from "../public/es/ca_osasuna_top_goals.json";
 // import rawTopPlayers from "../public/es/cd_leganés_top_goals.json";
 // import rawTopPlayers from "../public/es/celta_de_vigo_top_goals.json";
