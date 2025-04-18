@@ -19,8 +19,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 
 // import rawTopPlayers from "../public/fr/aj_auxerre_top_goals.json";
 // import rawTopPlayers from "../public/fr/angers_sco_top_goals.json";
-// import rawTopPlayers from "../public/fr/as_monaco_top_goals.json";
-import rawTopPlayers from "../public/fr/as_saint-étienne_top_goals.json";
+import rawTopPlayers from "../public/fr/as_monaco_top_goals.json";
+// import rawTopPlayers from "../public/fr/as_saint-étienne_top_goals.json";
 // import rawTopPlayers from "../public/fr/fc_nantes_top_goals.json";
 // import rawTopPlayers from "../public/fr/fc_toulouse_top_goals.json";
 // import rawTopPlayers from "../public/fr/le_havre_ac_top_goals.json";
