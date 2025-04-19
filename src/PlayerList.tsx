@@ -25,8 +25,8 @@ import { getLogoCode } from "./utils/getLogoClub";
 // import rawTopPlayers from "../public/es/celta_de_vigo_top_goals.json";
 // import rawTopPlayers from "../public/es/deportivo_alavés_top_goals.json";
 // import rawTopPlayers from "../public/es/fc_barcelona_top_goals.json";
-import rawTopPlayers from "../public/es/getafe_cf_top_goals.json";
-// import rawTopPlayers from "../public/es/girona_fc_top_goals.json";
+// import rawTopPlayers from "../public/es/getafe_cf_top_goals.json";
+import rawTopPlayers from "../public/es/girona_fc_top_goals.json";
 // import rawTopPlayers from "../public/es/rayo_vallecano_top_goals.json";
 
 // import rawTopPlayers from "../public/es/rcd_espanyol_barcelona_top_goals.json";
